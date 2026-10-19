@@ -116,7 +116,7 @@ END_OF_MAKE
                 next unless $name =~ /^(perl-\d+\.\d+)\.(\d+)\z/
                          or $name =~ /^(latest_blead)\z/;
                 my $major = $1;
-                my $minor = $2 // 0;
+                my $minor = defined( $2 ) ? $2 : 0;
                 my $path = "$ENV{HOME}/perl5/perlbrew/perls/$name/bin/perl";
                 if (-e $path) {
                     $candidate{$major} = [$minor, $path]
